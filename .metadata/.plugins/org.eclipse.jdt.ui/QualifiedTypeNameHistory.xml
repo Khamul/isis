@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="fixture.product.ProductsFixture"/>
+<fullyQualifiedTypeName name="org.product.Product"/>
+<fullyQualifiedTypeName name="org.product.ProductRepository"/>
+<fullyQualifiedTypeName name="org.apache.isis.applib.annotation.When"/>
+</qualifiedTypeNameHistroy>
