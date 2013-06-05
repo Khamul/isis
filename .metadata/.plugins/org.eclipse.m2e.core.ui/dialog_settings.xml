@@ -48,10 +48,9 @@
 			<item value="s"/>
 		</list>
 	</section>
-	<section name="MavenProjectImportWizardPage">
-		<list key="rootDirectory">
-			<item value="/home/Matias/ProyectoFinal/myapp"/>
-			<item value="/home/Matias/ProyectoFinal/ApacheIsis"/>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="myapp-product"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -61,9 +60,10 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 		</list>
 	</section>
-	<section name="MavenModuleWizardParentPage">
-		<list key="moduleName">
-			<item value="myapp-product"/>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/home/Matias/ProyectoFinal/myapp"/>
+			<item value="/home/Matias/ProyectoFinal/ApacheIsis"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

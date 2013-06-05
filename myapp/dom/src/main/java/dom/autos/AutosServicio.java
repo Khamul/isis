@@ -1,24 +1,32 @@
 package dom.autos;
 
+
+
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.isis.applib.AbstractContainedObject;
-//import org.apache.isis.applib.AbstractFactoryAndRepository;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
+
 
 import com.google.common.base.Objects;
 
 
 import dom.autos.Autos;
+import dom.autos.Autos.Estado;
 import dom.autos.Autos.Marca;
+
+import dom.autos.Autos.Seguro;
+import dom.autos.Autos.TipoCombustible;
  
 
 @Named("Autos")
 public class AutosServicio extends AbstractContainedObject{
 
- 
+	 @MemberOrder(sequence = "2")
 	 public List<Autos> ListarAutos() {
 
 		 final List<Autos> autos= allInstances(Autos.class);
@@ -27,13 +35,21 @@ public class AutosServicio extends AbstractContainedObject{
 		 }
 	
 	 
-	@MemberOrder(sequence = "2")
+	@MemberOrder(sequence = "1")
 	public Autos CargarAuto(
-	       @Named("Patente") String patente,
-	       @Named("Marca") Marca marca, 
-	       @Named("Modelo") String modelo) {
-	     final String ownedBy = currentUserName();
-	     return elAuto(patente,marca,modelo,ownedBy);
+			@Named("Patente") String patente,
+			@Named("Marca") Marca marca, 
+			@Named("Modelo") String modelo, 
+			@Named("Año") int ano,
+			@Named("Color") String color,
+			@Named("Kilometraje") int kms,
+			@Named("Capacidad Baul (lt)") int baul,
+			@Named("Tipo de Combustible") TipoCombustible combustible,
+			@Named("Estado de Alquiler") Estado estado,
+			@Named("Fecha de Compra") Date fechaCompra,
+			@Named("Compañía de Seguro")Seguro seguro)
+	   { final String ownedBy = currentUserName();
+	     return elAuto(patente,marca,modelo,ano,color,kms,baul,combustible,estado,fechaCompra,seguro,ownedBy);
 	   }
 		 
 	@Hidden // for use by fixtures
@@ -41,11 +57,27 @@ public class AutosServicio extends AbstractContainedObject{
 		   String patente,
 		   Marca marca, 
 		   String modelo,
+		   int ano,
+		   String color,
+		   int kms, 
+		   int baul,
+		   TipoCombustible combustible,
+		   Estado estado,
+		   Date fechaCompra,
+		   Seguro seguro,
 		   String userName) {
 		 final Autos auto = newTransientInstance(Autos.class);
 		   auto.setPatente(patente);
 		   auto.setMarca(marca);
 		   auto.setModelo(modelo);
+		   auto.setAno(ano);
+		   auto.setColor(color);
+		   auto.setKilometraje(kms);
+		   auto.setCapacidadBaul(baul);
+		   auto.setTipoCombustible(combustible);
+		   auto.setEstado(estado);
+		   auto.setFechaCompra(fechaCompra);
+		   auto.setSeguro(seguro);
 		   auto.setOwnedBy(userName);
  
         // 
@@ -58,6 +90,32 @@ public class AutosServicio extends AbstractContainedObject{
        return auto;
     }
 	
+	
+	
+	
+	@MemberOrder(sequence = "3")
+	public Marcas CargarMarca(
+			@Named("Marca") String marcas)
+	   { 
+	     return laMarca(marcas);
+	   }
+	@Hidden // for use by fixtures
+	public Marcas laMarca(
+		   String marcas)  {
+		 final Marcas aux = newTransientInstance(Marcas.class);
+		   aux.setMarcas(marcas);
+		   persist(aux);
+		   return aux;
+	}
+	
+	
+	@MemberOrder(sequence = "4")
+	public List<Marcas> ListarMarcas() {
+
+		 final List<Marcas> aux= allInstances(Marcas.class);
+		 
+		 return aux;
+		 }
 
 
 	// {{ helpers

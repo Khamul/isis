@@ -4,4 +4,16 @@
 <fullyQualifiedTypeName name="org.product.Product"/>
 <fullyQualifiedTypeName name="org.product.ProductRepository"/>
 <fullyQualifiedTypeName name="org.apache.isis.applib.annotation.When"/>
+<fullyQualifiedTypeName name="dom.autos.Autos.TipoCombustible"/>
+<fullyQualifiedTypeName name="dom.autos.Autos.Estado"/>
+<fullyQualifiedTypeName name="org.joda.time.LocalDate"/>
+<fullyQualifiedTypeName name="dom.autos.Autos.Seguro"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="org.apache.isis.applib.value.DateTime"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="dom.autos.Marca"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="dom.autos.Autos.Marca"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,149 @@
+package dom.autos;
+
+ 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.VersionStrategy;
+
+import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.DescribedAs;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.RegEx;
+import org.apache.isis.applib.util.TitleBuffer;
+ 
+
+
+import dom.autos.AutosServicio;
+
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
+@javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY)
+@javax.jdo.annotations.Query(
+		name="listado", language="JDQL",
+		value="SELECT * FROM dom.autos.Autos")
+@javax.jdo.annotations.Version(strategy=VersionStrategy.VERSION_NUMBER, column="VERSION")
+public class Autos {
+	
+	public static enum Marca {
+        CHEVROLET, CITROEN, FIAT, FORD, RENAULT, TOYOTA, VOLKSWAGEN ;
+    }
+	
+	// {{ Identification on the UI
+	public String title() {
+	final TitleBuffer buf = new TitleBuffer();
+	buf.append(getPatente());
+	       
+	       
+	return buf.toString();
+	}
+
+	// }}
+	  
+	// {{ OwnedBy (property)
+	private String ownedBy;
+
+	@Hidden
+	// not shown in the UI
+	public String getOwnedBy() {
+	    return ownedBy;
+	}
+
+	public void setOwnedBy(final String ownedBy) {
+	    this.ownedBy = ownedBy;
+	}	    
+	  
+	// {{ Patente
+	
+	private String patente;
+	@DescribedAs("El dominio del vehiculo.")
+	@RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
+	@MemberOrder(sequence="1")
+	public String getPatente(){
+		return patente;
+	}
+	
+	public void setPatente(String patente){
+		this.patente=patente;
+	}
+	
+	// {{ Marca
+	private Marca marca;
+	@DescribedAs("La marca del vehiculo.")
+	@RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
+	@MemberOrder(sequence="2")
+	public Marca getMarca(){
+		return marca;
+	}
+	
+	public void setMarca(Marca marca){
+		this.marca=marca;
+	}	
+	
+	// {{ Modelo
+    private String modelo;
+    @DescribedAs("El modelo del vehiculo.")
+    @RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
+    // words, spaces and selected punctuation
+    @MemberOrder(sequence = "3")
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(final String modelo) {
+        this.modelo = modelo;
+    }
+    // }}
+    
+ // {{ Año
+    private int ano;
+    @DescribedAs("El año del vehiculo.")
+    @RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
+    // words, spaces and selected punctuation
+    @MemberOrder(sequence = "4")
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(final int ano) {
+        this.ano = ano;
+    }
+    // }}
+
+ // {{ Categoria ----> falta pq es un value object.
+    
+ // {{ Color
+    private String color;
+    @DescribedAs("El color del vehiculo.")
+    @RegEx(validation = "\\w[@&:\\-\\,\\.\\+ \\w]*")
+    // words, spaces and selected punctuation
+    @MemberOrder(sequence = "5")
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(final String color) {
+        this.color = color;
+    }
+    // }}
+    
+    
+    
+       
+  
+    // {{ injected: Servicio Auto
+    private AutosServicio aservicio;
+    
+    public void setAutosServicio(final AutosServicio aservicio) {
+        this.aservicio = aservicio;
+    }
+    
+    
+    // {{ injected: DomainObjectContainer
+    @SuppressWarnings("unused")
+    private DomainObjectContainer container;
+
+    public void setDomainObjectContainer(final DomainObjectContainer container) {
+        this.container = container;
+    }
+    // }}
+	
+}

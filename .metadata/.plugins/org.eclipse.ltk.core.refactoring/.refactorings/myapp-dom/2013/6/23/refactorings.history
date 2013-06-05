@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;dom.autos.Marca&apos; to &apos;Marcas&apos;&#x0A;- Original project: &apos;myapp-dom&apos;&#x0A;- Original element: &apos;dom.autos.Marca&apos;&#x0A;- Renamed element: &apos;dom.autos.Marcas&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Marca&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;dom.autos{Marca.java[Marca" matchStrategy="1" name="Marcas" qualified="false" references="true" similarDeclarations="false" stamp="1370407049099" textual="false" version="1.0"/>
+</session>
